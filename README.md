@@ -30,10 +30,35 @@ In this project, you can track the exchange rate in real time
 
 ## --------------------SETUP--------------------
 
+## Clone repository
+
+```bash
+git clone https://github.com/interorganizationua-svg/currency-app.git
+cd currency-app
+```
+
 ## Set dependencies
 
 ```bash
 composer install
+```
+
+## Environment setup
+
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+## Configure .env
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=currency_app
+DB_USERNAME=root
+DB_PASSWORD=
 ```
 
 ## Create a database
@@ -42,28 +67,22 @@ composer install
 php artisan migrate --seed
 ```
 
-
 ## Starting the server 
 
 ```bash
 php artisan serve
 ```
 
-## API 
-
-GET - `/api/currencies` (list of currencies )
-GET - `/api/rates?currency=EUR` (Exchange rates)
-GET -  `/api/chart?currency=EUR&days=7` (Data for the graph)
-
 ## Sync historical data
 
 ```bash
-php artisan rates:sync --from=2025-01-01 or Admin Panel
+php artisan rates:sync --from=2025-01-01
 ```
 
-## Clone repository
+or via Admin Panel at http://127.0.0.1:8000/admin
 
-```bash
-git clone https://github.com/your-username/currency-app.git
-cd currency-app
-```
+## API 
+
+GET - `/api/currencies` (list of currencies)
+GET - `/api/rates?currency=EUR` (Exchange rates)
+GET - `/api/chart?currency=EUR&days=7` (Data for the graph)
