@@ -1,0 +1,49 @@
+{
+    "info": {
+        "name": "Exchange API",
+        "scheme": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    }, 
+    "item": [
+        {
+            "name": "Get Currency",
+            "request": {
+                "method": "GET",
+                "url": "http://127.0.0.1:8000/api/currencies",
+                "path": ["api", "currencies"]
+            }
+        },
+        {
+            "name": "Get Rates",
+            "request": {
+                "method": "GET",
+                "url": "http://127.0.0.1:8000/api/rates",
+                "path": ["api", "rates"],
+                "query" : [
+                    {
+                        "key": "currency",
+                        "value": "EUR"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Get Chart",
+            "request": {
+                "method": "GET",
+                "url": "http://127.0.0.1:8000/api/chart?currency=EUR&days=7",
+                "path": ["api", "chart"],
+                "query": [
+                    {
+                        "key": "currency",
+                        "value": "EUR"
+                    },
+                    {
+                        "key": "days",
+                        "value": "7"
+                    }
+                ]
+                
+            }
+        }
+    ]
+}
