@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Currency;
 use App\Models\ExchangeRate;
-use Illuminate\Http\Request;
+use App\Http\Requests\ChartRequest;
 
 class ExchangeRateController extends Controller
 {
-    public function index(Request $request)
+    public function index(ChartRequest  $request)
     {
         $rates = ExchangeRate::with('currency')
             ->when($request->currency, function ($q) use ($request) {
@@ -23,7 +23,7 @@ class ExchangeRateController extends Controller
         return response()->json($rates);
     }
 
-    public function chart(Request $request)
+    public function chart(ChartRequest  $request)
     {
         $days = $request->get('days', 7);
         $currencyCode = $request->get('currency', 'EUR');
