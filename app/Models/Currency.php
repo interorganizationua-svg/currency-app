@@ -11,4 +11,7 @@ class Currency extends Model
         'name',
         'is_active'
     ];
+    public function rates() {
+        return $this->hasMany(ExchangeRate::class);
+    }
 }
